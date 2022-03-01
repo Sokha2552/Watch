@@ -78,7 +78,7 @@ $this->title = 'My Yii Application';
                                 </div>
                                 <div class="product-caption">
                                     <h3><a href="product_details.html"><?= $value['name'] ?></a></h3>
-                                    <span>$ <?= $value['price'] ?></span>
+                                    <span>$ <?= number_format($value['price']) ?></span>
                                 </div>
                             </div>
                         </div>

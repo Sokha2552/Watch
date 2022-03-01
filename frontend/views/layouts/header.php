@@ -14,14 +14,14 @@ use yii\helpers\Url;
     .header-right ul li:hover>ul.submenu {
         visibility: visible;
         opacity: 1;
-        top: 100%;
+        top: 256%;
     }
 
     .header-right ul ul.submenu {
         position: absolute;
         width: 150px;
         background: #fff;
-        left: -215%;
+        left: -172%;
         top: 90%;
         visibility: hidden;
         opacity: 0;
@@ -41,8 +41,8 @@ use yii\helpers\Url;
         border-width: 0 6px 6px 6px;
         border-color: transparent transparent red transparent;
         content: "";
-        top: -5px;
-        left: 13%;
+        top: -8px;
+        left: 77%;
         position: absolute;
         transition: .3s;
         z-index: -1;
@@ -59,6 +59,8 @@ use yii\helpers\Url;
         font-size: 16px;
         color: #0b1c39;
         text-transform: capitalize;
+        font-family: "Josefin Sans", sans-serif;
+        font-weight: 500;
     }
 
     .header-right .submenu li {
@@ -137,10 +139,18 @@ use yii\helpers\Url;
                             <li>
                                 <a href="<?= Url::to(['site/login']) ?>"><span class="flaticon-user"></span></a>
                                 <ul class="submenu" style="display: inline-grid !important;">
-                                    <li><a href="<?= Url::to(['site/login']) ?>">Login</a></li>
-                                    <li> <?= Html::a('Logout', ['site/logout'], ['data' => [
+                                    <?php if (Yii::$app->user->isGuest) { ?>
+                                        <li><a href="<?= Url::to(['site/login']) ?>">Login</a></li>
+                                    <?php } ?>
+                                    <?php if (!Yii::$app->user->isGuest) { ?>
+                                        <li><a href="<?= Url::to(['site/profile']) ?>">Profile</a></li>
+                                        <li>
+                                            <?= Html::a('Logout', ['site/logout'], ['data' => [
+                                                'confirm' => 'Are you sure?',
                                                 'method' => 'post',
-                                            ]]) ?></li>
+                                            ]]) ?>
+                                        </li>
+                                    <?php } ?>
                                 </ul>
                             </li>
                             <li><a href="<?= Url::to(['site/cart']) ?>"><span class="flaticon-shopping-cart"></span></a> </li>
