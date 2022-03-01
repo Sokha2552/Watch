@@ -24,7 +24,7 @@ $this->title = 'My Yii Application';
                         </div>
                         <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4 d-none d-sm-block">
                             <div class="hero__img" data-animation="bounceIn" data-delay=".4s">
-                                <img src="assets/img/hero/watch.png" alt="" class=" heartbeat">
+                                <img src="style/img/hero/watch.png" alt="" class=" heartbeat">
                             </div>
                         </div>
                     </div>
@@ -46,7 +46,7 @@ $this->title = 'My Yii Application';
                         </div>
                         <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4 d-none d-sm-block">
                             <div class="hero__img" data-animation="bounceIn" data-delay=".4s">
-                                <img src="assets/img/hero/watch.png" alt="" class=" heartbeat">
+                                <img src="style/img/hero/watch.png" alt="" class=" heartbeat">
                             </div>
                         </div>
                     </div>
@@ -97,24 +97,24 @@ $this->title = 'My Yii Application';
             <div class="row">
                 <div class="col-xl-6 col-lg-4 col-md-6 col-sm-6">
                     <div class="single-gallery mb-30">
-                        <div class="gallery-img big-img" style="background-image: url(assets/img/gallery/gallery1.png);"></div>
+                        <div class="gallery-img big-img" style="background-image: url(style/img/gallery/gallery1.png);"></div>
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
                     <div class="single-gallery mb-30">
-                        <div class="gallery-img big-img" style="background-image: url(assets/img/gallery/gallery2.png);"></div>
+                        <div class="gallery-img big-img" style="background-image: url(style/img/gallery/gallery2.png);"></div>
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-4 col-md-12">
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-6 col-sm-6">
                             <div class="single-gallery mb-30">
-                                <div class="gallery-img small-img" style="background-image: url(assets/img/gallery/gallery3.png);"></div>
+                                <div class="gallery-img small-img" style="background-image: url(style/img/gallery/gallery3.png);"></div>
                             </div>
                         </div>
                         <div class="col-xl-12 col-lg-12  col-md-6 col-sm-6">
                             <div class="single-gallery mb-30">
-                                <div class="gallery-img small-img" style="background-image: url(assets/img/gallery/gallery4.png);"></div>
+                                <div class="gallery-img small-img" style="background-image: url(style/img/gallery/gallery4.png);"></div>
                             </div>
                         </div>
                     </div>
@@ -205,14 +205,14 @@ $this->title = 'My Yii Application';
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-10">
                     <div class="choice-watch-img mb-40">
-                        <img src="assets/img/gallery/choce_watch1.png" alt="">
+                        <img src="style/img/gallery/choce_watch1.png" alt="">
                     </div>
                 </div>
             </div>
             <div class="row align-items-center justify-content-between">
                 <div class="col-lg-6 col-md-6 col-sm-10">
                     <div class="choice-watch-img mb-40">
-                        <img src="assets/img/gallery/choce_watch2.png" alt="">
+                        <img src="style/img/gallery/choce_watch2.png" alt="">
                     </div>
                 </div>
                 <div class="col-lg-5 col-md-6">
