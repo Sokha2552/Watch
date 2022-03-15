@@ -41,15 +41,12 @@ return [
             'bundles' => [
                 \yii\bootstrap4\BootstrapAsset::class => false
             ]
-        ]
-        /*
+        ],
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'rules' => [
-            ],
-        ],
-        */
+            'rules' => [],
+        ]
     ],
     'params' => $params,
 ];

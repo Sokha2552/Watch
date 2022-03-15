@@ -1,6 +1,8 @@
 <?php
 
 use yii\helpers\Url;
+
+$base_url = Yii::getAlias("@web");
 ?>
 <!-- Sidebar -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
@@ -25,7 +27,7 @@ use yii\helpers\Url;
 
     <!-- Nav Item - Charts -->
     <li class="nav-item">
-        <a class="nav-link" href="<?= Url::to(['/product/index']) ?>">
+        <a class="nav-link" href="<?= Url::to($base_url . '/product') ?>">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Products</span></a>
     </li>

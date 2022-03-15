@@ -21,7 +21,7 @@ use yii\helpers\Url;
         position: absolute;
         width: 150px;
         background: #fff;
-        left: -172%;
+        left: -12%;
         top: 90%;
         visibility: hidden;
         opacity: 0;
@@ -94,7 +94,7 @@ use yii\helpers\Url;
                 <div class="menu-wrapper">
                     <!-- Logo -->
                     <div class="logo">
-                        <a href="index.html"><img src="style/img/logo/logo.png" alt=""></a>
+                        <a href="index.html"><img src="<?= Yii::getAlias("@web") ?>/style/img/logo/logo.png" alt=""></a>
                     </div>
                     <!-- Main-menu -->
                     <div class="main-menu d-none d-lg-block">
@@ -117,8 +117,6 @@ use yii\helpers\Url;
                                 </li>
                                 <li><a href="#">Pages</a>
                                     <ul class="submenu">
-                                        <li><a href="<?= Url::to(['site/login']) ?>">Login</a></li>
-                                        <li><a href="<?= Url::to(['site/cart']) ?>">Cart</a></li>
                                         <li><a href="<?= Url::to(['site/elements']) ?>">Element</a></li>
                                         <li><a href="<?= Url::to(['site/confirmation']) ?>">Confirmation</a></li>
                                         <li><a href="<?= Url::to(['site/checkout']) ?>">Product Checkout</a></li>
@@ -137,13 +135,19 @@ use yii\helpers\Url;
                                 </div>
                             </li>
                             <li>
-                                <a href="<?= Url::to(['site/login']) ?>"><span class="flaticon-user"></span></a>
+                                <?php if (Yii::$app->user->isGuest) { ?>
+                                    <a href="<?= Url::to(['site/login']) ?>"><span class="flaticon-user"></span></a>
+                                <?php } ?>
+                                <?php if (!Yii::$app->user->isGuest) { ?>
+                                    <a href="<?= Url::to(['site/login']) ?>"><span class="text-uppercase"><b><?= Yii::$app->user->identity->username ?></b><span class="flaticon-user"></span></span></a>
+                                <?php } ?>
+
                                 <ul class="submenu" style="display: inline-grid !important;">
                                     <?php if (Yii::$app->user->isGuest) { ?>
                                         <li><a href="<?= Url::to(['site/login']) ?>">Login</a></li>
                                     <?php } ?>
                                     <?php if (!Yii::$app->user->isGuest) { ?>
-                                        <li><a href="<?= Url::to(['site/profile']) ?>">Profile</a></li>
+                                        <li><a href="<?= Url::to(['/profile/index']) ?>">Profile</a></li>
                                         <li>
                                             <?= Html::a('Logout', ['site/logout'], ['data' => [
                                                 'confirm' => 'Are you sure?',
@@ -153,6 +157,7 @@ use yii\helpers\Url;
                                     <?php } ?>
                                 </ul>
                             </li>
+                            <li><a href="<?= Url::to(['/cart/index']) ?>"><span class="flaticon-shopping-cart"></span></a> </li>
                             <li><a href="<?= Url::to(['site/cart']) ?>"><span class="flaticon-shopping-cart"></span></a> </li>
                         </ul>
                     </div>

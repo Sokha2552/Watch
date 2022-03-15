@@ -17,6 +17,7 @@ use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 use backend\models\Product;
 use backend\models\ProductCategory;
+use backend\models\UserAddress;
 
 /**
  * Site controller

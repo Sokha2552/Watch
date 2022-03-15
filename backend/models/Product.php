@@ -140,25 +140,38 @@ class Product extends \yii\db\ActiveRecord
         $ok = parent::save($runValidation, $attributeNames);
 
         if ($ok && $this->imageFile) {
-            $fullPath = Yii::getAlias('@web/storage' . $this->image_url);
+            $fullPath = Yii::getAlias('@frontend/web/storage' . $this->image_url);
             $dir = dirname($fullPath);
             if (!FileHelper::createDirectory($dir) | !$this->imageFile->saveAs($fullPath)) {
-                $transaction->roollBack();
+                $transaction->rollBack();
+
                 return false;
             }
         }
+
         $transaction->commit();
+
         return $ok;
     }
+
     public function getImageUrl()
     {
         if ($this->image_url) {
-            return Yii::getAlias("@web") . '/storage' . $this->image_url;
+            return Yii::$app->params['frontendUrl'] . '/storage' . $this->image_url;
         }
-        return Yii::getAlias("@web") . '/image/no_img.jpg';
+        return Yii::$app->params('frontendUrl') . '/image/no_img.jpg';
     }
     public function getCategory()
     {
         return $this->hasOne(ProductCategory::class, ['id' => 'category_id']);
+    }
+    public function published()
+    {
+        return $this->andWhere(['status' => 1]);
+    }
+
+    public function id($id)
+    {
+        return $this->andWhere(['id' => $id]);
     }
 }

@@ -44,6 +44,7 @@ class AppAsset extends AssetBundle
         'style/js/jquery.ajaxchimp.min.js',
         'style/js/plugins.js',
         'style/js/main.js',
+        'js/app.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',

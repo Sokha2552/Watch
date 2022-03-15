@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use backend\models\UserAddress;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
@@ -24,6 +25,8 @@ use yii\web\IdentityInterface;
  * @property integer $created_at
  * @property integer $updated_at
  * @property string $password write-only password
+ * 
+ * @property \backend\models\UserAddress[] $addresses
  */
 class User extends ActiveRecord implements IdentityInterface
 {
@@ -32,6 +35,8 @@ class User extends ActiveRecord implements IdentityInterface
     const STATUS_ACTIVE = 10;
 
 
+    public $password;
+    public $passwordConfirm;
     /**
      * {@inheritdoc}
      */
@@ -56,7 +61,9 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            ['status', 'default', 'value' => self::STATUS_INACTIVE],
+            [['first_name', 'last_name', 'username', 'email'], 'required'],
+            [['first_name', 'last_name', 'username', 'email'], 'string', 'max' => 255],
+            ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_DELETED]],
         ];
     }
@@ -217,5 +224,23 @@ class User extends ActiveRecord implements IdentityInterface
     {
         $fullName = trim($this->first_name . ' ' . $this->last_name);
         return $fullName ?: $this->email;
+    }
+
+    /**
+     * @return mixed
+     * @author Zura Sekhniashvili <zurasekhniashvili@gmail.com> 
+     */
+    public function getAddresses()
+    {
+        return $this->hasMany(UserAddress::class, ['user_id' => 'id']);
+    }
+    /**
+     * @return \backend\models\UserAddress|null
+     */
+    public function getAddress(): ?UserAddress
+    {
+        $address = $this->addresses[0] ?? new UserAddress();
+        $address->user_id = $this->id;
+        return $address;
     }
 }
